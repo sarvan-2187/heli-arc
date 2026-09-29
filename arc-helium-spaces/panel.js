@@ -71,16 +71,45 @@ function rowEl(props, ...children) {
   return row;
 }
 
+// Icon URLs that failed to load, so re-renders don't retry them. A site's
+// own favicon URL fails from an extension page when the site sends
+// Cross-Origin-Resource-Policy, blocks hotlinking, or the file is gone.
+const failedIcons = new Set();
+
+// The browser's cached favicon for a page. It's served locally, so site
+// headers can't block it.
+function browserFavicon(pageUrl) {
+  const u = new URL(chrome.runtime.getURL('/_favicon/'));
+  u.searchParams.set('pageUrl', pageUrl);
+  u.searchParams.set('size', '32');
+  return u.toString();
+}
+
+function letterIcon(url) {
+  let host = '';
+  try {
+    host = new URL(url).hostname.replace(/^www\./, '');
+  } catch {}
+  return el('span', { class: 'letter-icon', ariaHidden: 'true', textContent: (host[0] || '•').toUpperCase() });
+}
+
+// Try the tab's favicon, then the browser's cached one, then a letter.
 function faviconFor(url, favIconUrl) {
-  const img = el('img', { alt: '', loading: 'lazy', decoding: 'async' });
-  if (favIconUrl && /^(https?:|data:image\/)/.test(favIconUrl)) {
-    img.src = favIconUrl;
-  } else {
-    const u = new URL(chrome.runtime.getURL('/_favicon/'));
-    u.searchParams.set('pageUrl', url || 'about:blank');
-    u.searchParams.set('size', '32');
-    img.src = u.toString();
-  }
+  const sources = [];
+  if (favIconUrl && /^(https?:|data:image\/)/.test(favIconUrl)) sources.push(favIconUrl);
+  if (url) sources.push(browserFavicon(url));
+  const pending = sources.filter((src) => !failedIcons.has(src));
+  if (!pending.length) return letterIcon(url);
+
+  const img = el('img', { alt: '', decoding: 'async' });
+  let current = pending.shift();
+  img.addEventListener('error', () => {
+    failedIcons.add(current);
+    current = pending.shift();
+    if (current) img.src = current;
+    else img.replaceWith(letterIcon(url));
+  });
+  img.src = current;
   return img;
 }
 
