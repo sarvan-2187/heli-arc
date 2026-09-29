@@ -1,4 +1,4 @@
-// Arc Spaces for Helium: side panel UI.
+// Heli-Arc: side panel UI.
 //
 // Reads state from storage and chrome.tabs, re-renders on any change, and
 // sends every mutation to the background worker.

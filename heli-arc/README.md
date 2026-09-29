@@ -1,4 +1,4 @@
-# Arc Spaces for Helium
+# Heli-Arc
 
 Arc-style **Spaces**, **pinned folders** and a **per-space tab list**, in
 the browser's side panel. It's a companion to the Arc Dark theme
@@ -8,7 +8,7 @@ contain code.
 ## Install
 
 1. Open `helium://extensions` and turn on **Developer mode**.
-2. Click **Load unpacked** and select the `arc-helium-spaces` folder.
+2. Click **Load unpacked** and select the `heli-arc` folder.
 3. Pin the extension to the toolbar (puzzle icon → pin), then click it to
    open the panel.
 4. Optional: in `helium://settings/appearance`, set the side panel to open

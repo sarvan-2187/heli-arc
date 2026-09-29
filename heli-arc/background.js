@@ -1,4 +1,4 @@
-// Arc Spaces for Helium: background service worker.
+// Heli-Arc: background service worker.
 //
 // Owns the tab -> space mapping and the saved spaces/folders. The side panel
 // reads state straight from storage and sends every change here, so all

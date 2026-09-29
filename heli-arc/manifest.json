@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Arc Spaces for Helium",
+  "name": "Heli-Arc",
   "version": "1.0.0",
   "description": "Arc-style Spaces, pinned folders and a per-space tab list in the side panel.",
   "minimum_chrome_version": "116",
@@ -8,7 +8,7 @@
     "128": "icons/icon128.png"
   },
   "action": {
-    "default_title": "Open Spaces"
+    "default_title": "Open Heli-Arc"
   },
   "side_panel": {
     "default_path": "panel.html"
