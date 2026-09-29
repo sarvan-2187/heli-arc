@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Arc Dark for Helium",
+  "version": "1.0.0",
+  "description": "Arc-inspired black theme for Helium's vertical tabs sidebar and browser chrome.",
+  "icons": {
+    "128": "icons/icon128.png"
+  },
+  "theme": {
+    "colors": {
+      "frame": [0, 0, 0],
+      "frame_inactive": [10, 10, 10],
+      "toolbar": [18, 18, 18],
+      "tab_text": [240, 240, 240],
+      "tab_background_text": [150, 150, 150],
+      "toolbar_text": [230, 230, 230],
+      "toolbar_button_icon": [200, 200, 200],
+      "omnibox_background": [28, 28, 28],
+      "omnibox_text": [235, 235, 235],
+      "bookmark_text": [200, 200, 200],
+      "ntp_background": [0, 0, 0],
+      "ntp_text": [230, 230, 230]
+    }
+  }
+}
