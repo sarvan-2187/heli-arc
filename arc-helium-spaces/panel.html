@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spaces</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <header class="space-head">
+    <span class="space-dot" id="space-dot"></span>
+    <span class="space-name" id="space-name" title="Double-click to rename"></span>
+    <button class="icon-btn" id="space-menu" title="Space options" aria-label="Space options">⋯</button>
+  </header>
+
+  <main id="scroll">
+    <section class="favorites" id="favorites" aria-label="Pinned browser tabs"></section>
+
+    <section class="pinned" id="pinned" aria-label="Pinned">
+      <div class="section-head">
+        <span>Pinned</span>
+        <button class="icon-btn small" id="add-folder" title="New folder" aria-label="New folder">＋</button>
+      </div>
+      <div class="pinned-list" id="pinned-list"></div>
+    </section>
+
+    <div class="divider" id="divider">
+      <span></span>
+      <button class="text-btn" id="clear" title="Close all tabs in this space">Clear</button>
+    </div>
+
+    <button class="row new-tab" id="new-tab"><span class="plus">＋</span><span class="title">New Tab</span></button>
+    <section class="tabs" id="tabs" aria-label="Tabs"></section>
+  </main>
+
+  <footer class="space-bar" id="space-bar" aria-label="Spaces"></footer>
+
+  <div class="menu" id="menu" role="menu" hidden></div>
+  <div class="modal" id="modal" hidden>
+    <div class="modal-box">
+      <p id="modal-text"></p>
+      <div class="modal-actions">
+        <button class="text-btn" id="modal-cancel">Cancel</button>
+        <button class="text-btn danger" id="modal-ok">Delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="panel.js"></script>
+</body>
+</html>
